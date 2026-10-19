@@ -1,0 +1,19 @@
+
+Tensorboard is required. 
+
+1. First Train the PPO on each environment by using the terminal command: (1 at a time) 
+    python train_ppo.py --env MiniGrid-Empty-8x8-v0 --timesteps 1000000 --save_path ppo_empty
+    python train_ppo.py --env MiniGrid-DoorKey-8x8-v0 --timesteps 1000000 --save_path ppo_doorkey8
+    python train_ppo.py --env MiniGrid-LavaGapS7-v0 --timesteps 1000000 --save_path ppo_lavagap
+    python train_ppo.py --env MiniGrid-Dynamic-Obstacles-8x8-v0 --timesteps 1000000 --save_path ppo_dynamic_obstacles
+    python train_ppo.py --env MiniGrid-RedBlueDoors-8x8-v0 --timesteps 1000000 --save_path ppo_redblue_doors
+
+The above args are as follows: (Please replace <args> for different environments)
+    --env <environment> --timesteps <budget> --save_path <environment .zip file name for eval>
+
+
+2. Evaluate the PPO's training output .zip file: 
+    python evaluate_ppo.py --env <environment> --model_path <save_path.zip>
+
+3. Compute the stats (metrics)
+    python computer_metrics.py 
